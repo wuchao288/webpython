@@ -1,0 +1,29 @@
+<html>
+  <head>
+    {% if user.age==1 %}
+        <title>{{title}} - microblog</title>
+      {% else %}
+        <title>wu - microblog</title>
+    {% endif %}
+
+  <style>
+   body{
+     background-color: black;
+     color:lawngreen;
+   }
+   table{
+     border: 1px solid lawngreen;
+     border-collapse:collapse;
+   }
+   table td,table th{
+    border: 1px solid lawngreen;
+   }
+   
+  </style>
+  </head>
+ <body>
+        <div>Microblog: <a href="/index">Home</a></div>
+    <hr>
+    {% block content %}{% endblock %}
+ </body>
+</html>
