@@ -1,5 +1,6 @@
 from app  import app
 from flask import render_template, flash, redirect, url_for, request,session
+from app.we import main
 from app.forms import LoginForm
 
 @app.route('/')
@@ -36,7 +37,7 @@ def about():
 def login():
     form=LoginForm()
     if form.validate_on_submit() :
-        session['name'] = form.email.data
+        session['name'] = main(form.email.data,form.pwd.data)
         return redirect(url_for('index'))
          #flash('Login requested for OpenID="' + form.email.data + '", remember_me=' + str(form.pwd.data))
     return render_template("login.html",title='sign in',form=form)
