@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+  
+    <form action="" method="post" name="login">
+        {{form.hidden_tag()}}
+        
+        <div style="width:100%;text-align:center">
+          <h1>登录</h1>
+        <table style="width:500px;display: inline;"> 
+          <tr><th>用户名:</th><td> {{form.email(size=40)}}</td></tr>
+          <tr><th>密码:</th><td> {{form.pwd(size=40)}}</td></tr>
+          <tr><td colspan="2" style="text-align:center">{{form.submit}}</td></tr>
+        </table>
+        <p>
+            {% for error in form.email.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        </div>
+    </form>
+{% endblock %}

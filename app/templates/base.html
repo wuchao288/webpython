@@ -1,6 +1,6 @@
 <html>
   <head>
-    {% if user.age==1 %}
+    {% if title %}
         <title>{{title}} - microblog</title>
       {% else %}
         <title>wu - microblog</title>
@@ -12,18 +12,27 @@
      color:lawngreen;
    }
    table{
-     border: 1px solid lawngreen;
      border-collapse:collapse;
    }
    table td,table th{
     border: 1px solid lawngreen;
    }
-   
+   a{
+     color:white;
+   }
   </style>
   </head>
  <body>
-        <div>Microblog: <a href="/index">Home</a></div>
+        <div>欢迎来到无二之旅: <a href="/index">Home</a></div>
+        {% with messages=get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+              <li>{{ message }}</li>
+          {% endfor%}
+        {% endif %}
+          {% endwith %}
     <hr>
+
     {% block content %}{% endblock %}
  </body>
 </html>
