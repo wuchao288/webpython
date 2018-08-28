@@ -1,0 +1,5 @@
+# Netscape HTTP Cookie File
+# http://curl.haxx.se/rfc/cookie_spec.html
+# This is a generated file!  Do not edit.
+
+.uniqueway.com	TRUE	/	FALSE		_session_id	e2272aea5a5cdf646c20f51040949a62

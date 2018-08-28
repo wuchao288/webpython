@@ -1,24 +1,21 @@
 from app  import app
 from flask import render_template, flash, redirect, url_for, request,session
 from app.we import main
+from app.we import countries
 from app.forms import LoginForm
+import json
 
 @app.route('/')
 @app.route('/index')
 def index():
     user={"nickname":'wuchao',"age":33}
-    posts=[
-       {
-            'author': { 'nickname': 'John' },
-            'body': 'Beautiful day in Portland!'
-        },
-        {
-            'author': { 'nickname': 'Susan' },
-            'body': 'The Avengers movie was so cool!'
-        }
-    ]
     user["nickname"]=session.get('name')
-    return render_template("index.html", title = 'Home', user = user,posts = posts)
+    if session.get('name') is None:
+        return redirect(url_for('login'))    
+    posts=countries()
+    dic=json.loads(posts) 
+   
+    return render_template("index.html", title = 'Home', user = user,posts = dic["data"])
 
 @app.route('/about')
 def about():
